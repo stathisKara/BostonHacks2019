@@ -1,0 +1,38 @@
+.navbar {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    background-color: white !important;
+}
+
+.footer-copyright {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    color: darkgray;
+}
+
+/* Footer/Copyright */
+
+footer a {
+    color: #039391;
+}
+
+footer {
+    background-color: white !important;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+}
+
+/* Individual elements: Interactive signature color.*/
+
+#interactive {
+    color: #039391;
+}
+
+#tipsheet {
+    color: #039391;
+}
+
+#register {
+    color: #039391;
+}
