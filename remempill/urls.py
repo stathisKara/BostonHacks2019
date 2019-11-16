@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path
+from remempill.views import *
 
-from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', Index.as_view()),
 ]
 
 admin.site.site_header = 'RememPill Administration Site'

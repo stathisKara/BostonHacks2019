@@ -1,7 +1,67 @@
-from django.http import HttpResponse
+from django.contrib import auth
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.decorators.csrf import csrf_protect
 
 
-# Create your views here.
-def index(request):
-    return render(request, '../templates/index.html')
+class Index(View):
+    template_name = '../templates/index.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    @method_decorator(csrf_protect)
+    def post(self,request):
+        #post request for Login existing user
+        if request.POST['button'] == "Login":
+            user_email = request.POST.get('user_email', '')
+            user_password = request.POST.get('user_password', '')
+            print('user_email = ' + user_email)
+            print('user_password = ' + user_password)
+            # authenticate user account.
+            user = auth.authenticate(request, username=user_email, password=user_password)
+            if user is not None:
+                # login user account.
+                auth.login(request, user)
+                #response = HttpResponseRedirect('https://www.google.com/maps')
+                # set cookie to transfer user name to login success page.
+                # response.set_cookie('user_name', user_name, 3600)
+                content = {'message': 'Hello, World!'}
+                #return HttpResponse(user.get_id())
+            else:
+                error_json = {'error_message': 'User name or password is not correct.'}
+                # return render(request, 'https://www.facebook.com/', error_json)
+                #content = {'message': 'Wrong password!'}
+                #return Response(content)
+        #post request for Registering a new user
+        elif request.POST['button'] == "Register":
+            user_name = request.POST.get('user_name', '')
+            user_password = request.POST.get('user_password', '')
+            user_email = request.POST.get('user_email', '')
+            if len(user_name) > 0 and len(user_password) > 0 and len(user_email) > 0:
+                # check whether user account exist or not.
+                user = auth.authenticate(request, username=user_name, password=user_password)
+                # if user account do not exist.
+                if user is None:
+                    # create user account and return the user object.
+                    user = get_user_model().objects.create_user(username=user_name, password=user_password,
+                                                                email=user_email)
+                    # update user object staff field value and save to db.
+                    if user is not None:
+                        # user.is_staff = True
+                        # save user properties in sqlite auth_user table.
+                        user.save()
+                    # redirect web page to register success page.
+                    # response = HttpResponseRedirect('/user/register_success/')
+                    # response = HttpResponse('https://www.google.com/maps')
+                    # set user name, pasword and email value in session.
+                    request.session['user_name'] = user_name
+                    request.session['user_password'] = user_password
+                    request.session['user_email'] = user_email
+                    #return HttpResponse(user.get_id())
+                else:
+                    error_json = {'error_message': 'User account exist, please register another one.'}
+                    # return render(request, 'https://www.facebook.com/', error_json)
+                    #return HttpResponse('User account exist, please register another one.')

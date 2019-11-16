@@ -105,6 +105,19 @@ class GrandParent(models.Model):
     def get_pills(self):
         return Pill.objects.filter(owner=self)
 
+    def get_n_days_pills(self, day):
+        n_days_pills = []
+        for tmpPill in self.get_pills():
+            n_days_pills += PillConsumption.objects.filter(pill=tmpPill, time_to_consume__day=day)
+        return n_days_pills
+
+    def get_n_days_n_hours_pills(self, day, hour):
+        n_days_n_hours_pills = []
+        for tmpPill in self.get_pills():
+            n_days_n_hours_pills += PillConsumption.objects.filter(pill=tmpPill, time_to_consume__day=day,
+                                                                   time_to_consume__hour=hour)
+        return n_days_n_hours_pills
+
 
 class Pill(models.Model):
     name = models.CharField(max_length=30)
