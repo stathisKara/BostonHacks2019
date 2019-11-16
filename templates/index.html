@@ -1,10 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>$Title$</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Latest Min Boostrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <!-- Load Static Elements-->
+        {% load static %}
+        <link rel="stylesheet" href="{% static '/styles/basestyle.css' %}" type="text/css" media="all">
+        <!-- Additional Head Data -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+        <title>Remempill</title>
     </head>
     <body>
-        $END$
+        {% block navbar %}
+    <nav class="site-header sticky-top py-1 navbar navbar-light navbar-expand-md justify-content-center">
+        <a class="navbar-brand d-flex w-50 mr-auto" href="{% url 'index' %}">Learning Seeds&nbsp;<span id="interactive">Interactive</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse w-100" id="collapse">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <!-- Show login navbar: -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="tipsheet">My Tipsheet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Logout</a>
+                    </li>
+                    <!-- show unregistered user navbar: -->
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="register">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{% endblock %} <!-- ends the NavBar element-->
     </body>
 </html>
