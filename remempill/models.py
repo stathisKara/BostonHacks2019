@@ -102,6 +102,9 @@ class GrandParent(models.Model):
     def __str__(self):
         return self.name + " " + self.surname
 
+    def get_pills(self):
+        return Pill.objects.filter(owner=self)
+
 
 class Pill(models.Model):
     name = models.CharField(max_length=30)
@@ -113,4 +116,12 @@ class Pill(models.Model):
     owner = models.ForeignKey(GrandParent, on_delete=models.CASCADE, related_name="pill")
 
     def __str__(self):
-        return self.name
+        return str(self.owner) + "'s " + self.name
+
+
+class PillConsumption(models.Model):
+    pill = models.ForeignKey(Pill, on_delete=models.CASCADE, related_name="pill_consumption")
+    time_to_consume = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.pill) + " " + str(self.time_to_consume)

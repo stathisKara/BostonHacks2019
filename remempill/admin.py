@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import CareTaker, GrandParent, Pill
+from .models import CareTaker, GrandParent, Pill, PillConsumption
 
 
 class UserCreationForm(forms.ModelForm):
@@ -104,6 +104,11 @@ class PillAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'shape', 'color', 'size', 'remaining', 'owner']
 
 
+class PillConsumptionAdmin(admin.ModelAdmin):
+    fields = ['pill', 'time_to_consume']
+    list_display = ['id', 'pill', 'time_to_consume']
+
+
 # class PlaylistAdmin(admin.ModelAdmin):
 #     fields = ['name', 'songs_ids', 'local_id', 'tracks', 'user']
 #     list_display = ['id', 'name', 'local_id', 'user']
@@ -113,6 +118,7 @@ class PillAdmin(admin.ModelAdmin):
 admin.site.register(CareTaker, UserAdmin)
 admin.site.register(GrandParent, GrandParentAdmin)
 admin.site.register(Pill, PillAdmin)
+admin.site.register(PillConsumption, PillConsumptionAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
