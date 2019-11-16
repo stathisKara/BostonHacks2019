@@ -19,7 +19,6 @@ class MyUserManager(BaseUserManager):
             # creation_date=creation_date,
             username=username,
             # premium_ending_date=premium_ending_date,
-            is_premium=False,
         )
 
         user.set_password(password)
@@ -45,7 +44,7 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-class MyUser(AbstractBaseUser):
+class CareTaker(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
@@ -98,10 +97,10 @@ class GrandParent(models.Model):
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
 
-    user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='grandparent')
+    care_taker = models.ForeignKey(CareTaker, on_delete=models.CASCADE, related_name='grandparent')
 
     def __str__(self):
-        return self.name
+        return self.name + " " + self.surname
 
 
 class Pill(models.Model):

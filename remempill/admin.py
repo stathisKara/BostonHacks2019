@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import MyUser, GrandParent, Pill
+from .models import CareTaker, GrandParent, Pill
 
 
 class UserCreationForm(forms.ModelForm):
@@ -14,7 +14,7 @@ class UserCreationForm(forms.ModelForm):
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
-        model = MyUser
+        model = CareTaker
         fields = ('email', 'username')
 
     def clean_password2(self):
@@ -45,7 +45,7 @@ class UserChangeForm(forms.ModelForm):
                                                     "using <a href=\"../password/\">this form</a>."))
 
     class Meta:
-        model = MyUser
+        model = CareTaker
         fields = ('email', 'username', 'password', 'is_active', 'is_admin')
 
     def clean_password(self):
@@ -95,8 +95,8 @@ class UserAdmin(BaseUserAdmin):
 
 
 class GrandParentAdmin(admin.ModelAdmin):
-    fields = ['name', 'surname', 'user']
-    list_display = ['id', 'name', 'surname', 'user']
+    fields = ['name', 'surname', 'care_taker']
+    list_display = ['id', 'name', 'surname', 'care_taker']
 
 
 class PillAdmin(admin.ModelAdmin):
@@ -110,7 +110,7 @@ class PillAdmin(admin.ModelAdmin):
 
 
 # Now register the new UserAdmin...
-admin.site.register(MyUser, UserAdmin)
+admin.site.register(CareTaker, UserAdmin)
 admin.site.register(GrandParent, GrandParentAdmin)
 admin.site.register(Pill, PillAdmin)
 # ... and, since we're not using Django's built-in permissions,

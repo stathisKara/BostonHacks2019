@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'remempill.apps.RememberpillConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = 'remempill.CareTaker'
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = (
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
