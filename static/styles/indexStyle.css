@@ -1,0 +1,167 @@
+body, html {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container-fluid {
+. center;
+    width: 100%;
+
+}
+
+.jumbotron {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.90);
+}
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-info {
+    background-color: #039391;
+}
+
+
+
+
+
+#indexRadio {
+    display: none
+}
+
+.blog-card {
+    background-color: white;
+    border-radius: 0;
+    box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
+    height: 450px;
+    margin: 0 0;
+    max-width: 600px;
+    overflow: -moz-scrollbars-vertical;
+
+}
+
+.blog-card .card-body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+.card-body .main {
+    width: 100%;
+    height: 80%;
+}
+
+.card-body .choices {
+    width: auto;
+    height: 20%;
+}
+
+.choices .btns {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.container label {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+.choices button {
+    background-color: rgba(3, 147, 145, 0.8);
+    border: none;
+    border-radius: 0;
+}
+
+.choices button:hover {
+    background-color: rgba(3, 147, 145, 1);
+}
+
+.container fieldset {
+    min-width: 0;
+    padding: auto;
+    margin: auto;
+
+    border: none;
+}
+
+.blog-card .card-bg {
+    background: url("/static/images/demo/backgrounds/lightbulb.png") no-repeat center, linear-gradient(white, rgba(3, 147, 145, 0.7), white);
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.blog-card .card-content {
+    padding: 25px 12px 12px;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.blog-card .row {
+    margin: 0;
+    padding: 0;
+}
+
+.blog-card .divider {
+    width: 50%;
+    margin: 0.5em auto;
+    border: thin solid darkgray;
+    opacity: 0.3;
+}
+
+.form-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    background-color: rgba(3, 147, 145, 0.5);
+    color: white;
+    top: 10px;
+    height: 30px;
+    width: 30px;
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-right: 7px;
+    outline: none;
+}
+
+.form-radio:checked::before {
+    position: absolute;
+    font: 13px/1 'Open Sans', sans-serif;
+    left: 11px;
+    top: 7px;
+    content: '\02143';
+    transform: rotate(40deg);
+}
+
+.form-radio:hover {
+    background-color: rgba(3, 147, 145, 1);
+}
+
+.form-radio:checked {
+    background-color: rgba(3, 147, 145, 1);
+}
+
+label {
+    font: 15px/1.7 'Montserrat', sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+}
+
