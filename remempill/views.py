@@ -65,3 +65,9 @@ class Index(View):
                     error_json = {'error_message': 'User account exist, please register another one.'}
                     # return render(request, 'https://www.facebook.com/', error_json)
                     #return HttpResponse('User account exist, please register another one.')
+
+
+def pillcase(request):
+    return render(request, '../templates/pillcase.html',
+                  {'days': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday ', 'Saturday', 'Sunday']},
+                  'times')

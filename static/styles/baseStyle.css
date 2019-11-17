@@ -19,14 +19,18 @@ footer {
 }
 
 .footer {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
+    /*bottom: 0*/
 }
 
 /* Individual elements: Interactive signature color.*/
+.blue {
+    color: #3399FF !important;
+}
 
-#interactive {
-    color: #039391;
+.red {
+    color: #9A3334 !important;
 }
 
 #tipsheet {
@@ -35,4 +39,18 @@ footer {
 
 #register {
     color: #039391;
+}
+
+.nav-style {
+    background-color: whitesmoke !important;
+}
+
+.navbar-fixed-top {
+    min-height: 80px;
+}
+
+.navbar {
+    /*border-radius: 4px;*/
+    min-height: 5em;
+    border: 4px black !important;
 }
