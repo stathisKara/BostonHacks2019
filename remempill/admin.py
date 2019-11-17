@@ -95,8 +95,8 @@ class UserAdmin(BaseUserAdmin):
 
 
 class GrandParentAdmin(admin.ModelAdmin):
-    fields = ['name', 'surname', 'care_taker']
-    list_display = ['id', 'name', 'surname', 'care_taker']
+    fields = ['name', 'surname', 'phone', 'care_taker']
+    list_display = ['id', 'name', 'surname', 'phone', 'care_taker']
 
 
 class PillAdmin(admin.ModelAdmin):

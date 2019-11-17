@@ -96,6 +96,7 @@ class CareTaker(AbstractBaseUser):
 class GrandParent(models.Model):
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
+    phone = models.CharField(max_length=17, blank=True, default="")
 
     care_taker = models.ForeignKey(CareTaker, on_delete=models.CASCADE, related_name='grandparent')
 
