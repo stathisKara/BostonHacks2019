@@ -107,7 +107,7 @@ class Index(View):
             # Your Account SID from twilio.com/console
             account_sid = "ACd4f1564dcc6d85a1d13a45a50c35d8ae"
             # Your Auth Token from twilio.com/console
-            auth_token = "***REMOVED***"
+            auth_token = "TOKEN_NOT_HERE_ANYMORE"
 
             client = Client(account_sid, auth_token)
 
